@@ -8,14 +8,20 @@ require("hardhat-deploy");
 module.exports = {
   defaultNetwork: "hardhat",
   networks: {
+    localhost: {
+      url: "http://127.0.0.1:8545",
+      forking: {
+        url: `https://goerli.infura.io/v3/d8200853cc4c4001956d0c1a2d0de540`,
+      },
+      initialBaseFeePerGas: 0
+    },
     hardhat: {
       blockGasLimit: 12000000
-    }
-    // [BE CAREFUL THIS IS EXPENSIVE]
-    // mainnet: {
-    //   url: process.env.WEB3_API,
-    //   accounts: [process.env.PRIV]
-    // },
+    },
+    mainnet: {
+      url: process.env.WEB3_API,
+      accounts: [process.env.PRIV]
+    },
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY
